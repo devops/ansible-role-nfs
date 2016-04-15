@@ -1,0 +1,4 @@
+---
+# defaults file nfs
+
+nfs_exports: []

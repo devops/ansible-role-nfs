@@ -1,0 +1,11 @@
+---
+# test for RedHat/CentOS
+
+- name: Install NFS server.
+  hosts: nfs
+  vars:
+    nfs_exports:
+      - "/opt *(rw,sync,no_root_squash)"
+      - "/mnt *(rw,sync,no_root_squash)"
+  roles:
+    - ansible-role-nfs

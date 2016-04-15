@@ -1,0 +1,4 @@
+---
+# vars file for RedHat
+
+nfs_server_daemon: nfs

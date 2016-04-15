@@ -1,0 +1,16 @@
+---
+# tasks file for RedHat
+
+- name: Ensure NFS utilities are installed.
+  yum: name=nfs-utils state=installed
+
+- name: Ensure rpcbind is running.
+  service: name=rpcbind state=started enabled=yes
+
+- name: Ensure nfs is start on boot when RedHat/CentOS 6.
+  service: name={{ nfs_server_daemon }} enabled=yes
+  when: ansible_os_family == 'RedHat' and ansible_distribution_major_version == '6'
+
+- name: Ensure nfs is start on boot when RedHat/CentOS 7.
+  service: name=nfs-server enabled=yes
+  when: ansible_os_family == 'RedHat' and ansible_distribution_major_version == '7'
